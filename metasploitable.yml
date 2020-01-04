@@ -1,0 +1,21 @@
+---
+Name: Metasploitable
+Description: This game teaches the basic usage of wireshark and the metasploitable framework. 
+Instructions: First ssh into the player_nat with the Public IP Address and credentials. Then follow the instructions in the guide.
+InstructionsStudent: First intercept the unencrypted credentials being sent over the network, then use metasploit to break into the vulnerable machine.
+Instances:
+- Name: meta_nat
+- Name: metasploitable
+- Name: telnet_target
+Groups:
+- Name: Students
+  Users:
+  - Login: student
+  Access:
+  - Instance: meta_nat
+    IP_Visible: true
+  - Instance: metasploitable
+  - Instance: telnet_target
+
+ 
+

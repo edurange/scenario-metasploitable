@@ -1,0 +1,17 @@
+_  _ ____ ___ ____    _  _ ____ ___ 
+|\/| |___  |  |__| __ |\ | |__|  |  
+|  | |___  |  |  |    | \| |  |  |  
+
+#########################################################
+
+Welcome to the metasploitable scenario.
+
+Your first task is to identify the subnets and machines active on this virtual network by using nmap.
+
+Next, intercept the traffic which is being sent from the metasploitable machine to the ubuntu target using tshark. 
+
+Lastly, use metasploit to get root access on the metasploitable machine in as many ways as you can.
+
+Good luck!
+
+#########################################################
