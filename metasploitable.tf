@@ -82,7 +82,7 @@ provider "tls" {
 provider "aws" {
   version    = "~> 2"
   profile    = "default"
-  region     = var.aws_region
+  region     = "us-west-1"
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
 }
@@ -155,7 +155,7 @@ data "template_cloudinit_config" "meta_nat" {
 }
 
 resource "aws_instance" "meta_nat" {
-  ami                            = "ami-0129a2c52bea090ab"
+  ami                            = "ami-0eafeed097559aaeb"
   instance_type                  = "t2.nano"
   private_ip                     = "10.0.37.6"
   associate_public_ip_address    = true
