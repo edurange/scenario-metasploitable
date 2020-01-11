@@ -5,14 +5,6 @@ packages:
 %{ for package in packages ~}
 - ${package}
 %{ endfor ~}
-users:
-- default
-%{ for player in players ~}
-- name: ${player.login}
-  passwd: ${player.password.hash}
-  lock_passwd: false
-  shell: /bin/bash
-%{ endfor ~}
 write_files:
 - path: /etc/motd
   encoding: b64

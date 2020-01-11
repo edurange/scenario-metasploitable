@@ -155,7 +155,7 @@ data "template_cloudinit_config" "meta_nat" {
 }
 
 resource "aws_instance" "meta_nat" {
-  ami                            = "ami-0eafeed097559aaeb"
+  ami                            = "ami-0119396d0d1732c61"
   instance_type                  = "t2.nano"
   private_ip                     = "10.0.37.6"
   associate_public_ip_address    = true
@@ -177,29 +177,17 @@ resource "aws_instance" "meta_nat" {
   }
 
   provisioner "file" {
-    source = "${path.module}/ttylog"
-    destination = "/home/ubuntu/meta"
-  }
-
-  provisioner "file" {
-    source = "${path.module}/tty_setup"
-    destination = "/home/ubuntu/meta/tty_setup"
-  }
-
-  provisioner "file" {
     source = "${path.module}/iptables_setup"
-    destination = "/home/ubuntu/meta/iptables_setup"
+    destination = "/home/ubuntu/iptables_setup"
   }
 
   provisioner "remote-exec" {
     inline = [
       "set -eux",
       "cloud-init status --wait --long",
-      "cd /home/ubuntu/meta",
+      "cd /home/ubuntu/",
       "sudo chmod +x iptables_setup",
-      "sudo ./iptables_setup",
-      "sudo chmod +x tty_setup",
-      "sudo ./tty_setup"
+      "sudo ./iptables_setup"
     ]
   }
 }
@@ -256,30 +244,19 @@ resource "aws_instance" "telnet_target" {
     user                = "ubuntu"
     private_key         = tls_private_key.key.private_key_pem
   }
-  provisioner "file" {
-    source = "${path.module}/ttylog"
-    destination = "/home/ubuntu/meta"
-  }
-
-  provisioner "file" {
-    source = "${path.module}/tty_setup"
-    destination = "/home/ubuntu/meta/tty_setup"
-  }
 
   provisioner "file" {
     source = "${path.module}/telnet_setup"
-    destination = "/home/ubuntu/meta/telnet_setup"
+    destination = "/home/ubuntu/telnet_setup"
   }
 
   provisioner "remote-exec" {
     inline = [
       "set -eux",
       "cloud-init status --wait --long",
-      "cd /home/ubuntu/meta",
+      "cd /home/ubuntu/",
       "sudo chmod +x telnet_setup",
-      "sudo ./telnet_setup",
-      "sudo chmod +x tty_setup",
-      "sudo ./tty_setup"
+      "sudo ./telnet_setup"
     ]
   }
 }
@@ -335,15 +312,15 @@ resource "aws_instance" "metasploitable" {
   tags = merge(local.common_tags, {
     Name = "metasploitable/metasploitable"
   })
-  provisioner "file" {
-    source = "${path.module}/ttylog"
-    destination = "/home/vagrant"
-  }
+  #provisioner "file" {
+  #  source = "${path.module}/ttylog"
+  #  destination = "/home/vagrant"
+  #}
 
-  provisioner "file" {
-    source = "${path.module}/tty_setup_meta"
-    destination = "/home/vagrant/tty_setup"
-  }
+  #provisioner "file" {
+  #  source = "${path.module}/tty_setup_meta"
+  #  destination = "/home/vagrant/tty_setup"
+  #}
 
   provisioner "file" {
     source = "${path.module}/telnetscr.sh"
@@ -359,9 +336,7 @@ resource "aws_instance" "metasploitable" {
     inline = [
       "set -eux",
       "cd /home/vagrant",
-      "sudo chmod +x tty_setup",
       "sudo chmod +x telnetscr.sh",
-      "sudo ./tty_setup",
       "sudo crontab crontab_entry"
     ]
   }

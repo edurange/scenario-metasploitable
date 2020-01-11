@@ -12,6 +12,8 @@ Next, intercept the traffic which is being sent from the metasploitable machine 
 
 Lastly, use metasploit to get root access on the metasploitable machine in as many ways as you can.
 
-Good luck!
+To get started using metasploit, type 'msfconsole' it will ask you to set up an account with the web service.
+Do this, and then wait, it may take several minutes for the database to finish setting up - Do not interrupt it!
 
+Good Luck!
 #########################################################
