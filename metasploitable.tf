@@ -145,7 +145,7 @@ data "template_cloudinit_config" "meta_nat" {
     filename     = "init.cfg"
     content_type = "text/cloud-config"
     merge_type   = "list(append)+dict(recurse_list)"
-    content = templatefile("${path.module}/cloud-init.yml.tpl", {
+    content = templatefile("${path.module}/cloud-init-nat.yml.tpl", {
       players  = var.students
       motd     = file("${path.module}/motd_nat")
       packages = setunion(local.net_tools, ["telnetd"])
