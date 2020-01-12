@@ -10,4 +10,4 @@ sudo iptables -t nat -A POSTROUTING -p tcp -d 10.0.192.4 --dport 23 -j SNAT --to
 
 #fix for motd not displaying after removing ttylog
 #this should be moved to somewhere more appropriate eventually
-sudo echo 'cat /etc/motd' >> /etc/bash.bashrc
+#sudo echo 'cat /etc/motd' >> /etc/bash.bashrc

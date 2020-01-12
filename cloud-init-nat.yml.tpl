@@ -25,3 +25,6 @@ runcmd:
 - chmod -x /etc/update-motd.d/*
 - hostname ${hostname}
 - service ssh restart
+%{ for player in players ~}
+- cp -r /home/ubuntu/gobuster /home/${player.login}/
+%{ endfor ~}

@@ -155,8 +155,8 @@ data "template_cloudinit_config" "meta_nat" {
 }
 
 resource "aws_instance" "meta_nat" {
-  ami                            = "ami-0119396d0d1732c61"
-  instance_type                  = "t2.nano"
+  ami                            = "ami-007f91a5a5f5102f1"
+  instance_type                  = "t2.micro"
   private_ip                     = "10.0.37.6"
   associate_public_ip_address    = true
   subnet_id                      = aws_subnet.meta_nat.id
