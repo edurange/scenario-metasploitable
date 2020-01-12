@@ -7,3 +7,7 @@ sudo sysctl -p
 #Telnet forwarding rules
 sudo iptables -t nat -A PREROUTING -p tcp --dport 23 -j DNAT --to-destination 10.0.192.4:23
 sudo iptables -t nat -A POSTROUTING -p tcp -d 10.0.192.4 --dport 23 -j SNAT --to-source 10.0.37.6
+
+#fix for motd not displaying after removing ttylog
+#this should be moved to somewhere more appropriate eventually
+sudo echo 'cat /etc/motd' >> /etc/bash.bashrc
