@@ -283,7 +283,7 @@ data "template_cloudinit_config" "metasploitable" {
     merge_type   = "list(append)+dict(recurse_list)"
     content = templatefile("${path.module}/cloud-init-meta.yml.tpl", {
       players  = var.students
-      motd     = file("${path.module}/motd")
+      motd     = file("${path.module}/motd_meta")
       packages = local.net_tools
       hostname = "metasploitable"
     })
@@ -291,7 +291,7 @@ data "template_cloudinit_config" "metasploitable" {
 }
 resource "aws_instance" "metasploitable" {
   subnet_id                   = aws_subnet.meta_target.id
-  ami                         = "ami-074c4ee50c0241e5b"
+  ami                         = "ami-01a190653025d5c68"
   instance_type               = "t2.nano"
   private_ip                  = "10.0.20.4"
   key_name                    = aws_key_pair.key.key_name
