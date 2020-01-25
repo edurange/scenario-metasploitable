@@ -16,6 +16,28 @@ Groups:
     IP_Visible: true
   - Instance: metasploitable
   - Instance: telnet_target
-
- 
-
+Scoring:
+- Text: Hash of the card 'ace_of_clubs.png'
+  Type: String
+  Values:
+  - Value: 7aa0260989946155c0c6178ffc9b25e9
+    Points: '10'
+  Points: 10
+- Text: Hash of the card '3 of hearts.png'
+  Type: String
+  Values:
+  - Value: ef952b4676ae62b4b05dd67ce782f351
+    Points: '10'
+  Points: 10
+- Text: Hash of the card '5_of_hearts.png'
+  Type: String
+  Values:
+  - Value: 961bad32dc66846ed38c7e638e618ec3
+    Points: '10'
+  Points: 10
+- Text: Hash of the card '10_of_spades.png'
+  Type: String
+  Values:
+  - Value: 179d54b67a08326b14bd6f2109fb7921
+    Points: '10'
+  Points: 10

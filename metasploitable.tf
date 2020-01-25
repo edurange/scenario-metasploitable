@@ -291,7 +291,7 @@ data "template_cloudinit_config" "metasploitable" {
 }
 resource "aws_instance" "metasploitable" {
   subnet_id                   = aws_subnet.meta_target.id
-  ami                         = "ami-01a190653025d5c68"
+  ami                         = "ami-02acef1290732478f"
   instance_type               = "t2.nano"
   private_ip                  = "10.0.20.4"
   key_name                    = aws_key_pair.key.key_name
