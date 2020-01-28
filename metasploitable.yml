@@ -6,7 +6,6 @@ InstructionsStudent: First intercept the unencrypted credentials being sent over
 Instances:
 - Name: meta_nat
 - Name: metasploitable
-- Name: telnet_target
 Groups:
 - Name: Students
   Users:
@@ -15,7 +14,6 @@ Groups:
   - Instance: meta_nat
     IP_Visible: true
   - Instance: metasploitable
-  - Instance: telnet_target
 Scoring:
 - Text: Hash of the card 'ace_of_clubs.png'
   Type: String

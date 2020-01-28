@@ -119,14 +119,3 @@ resource "aws_route_table_association" "meta_target" {
   subnet_id      = aws_subnet.meta_target.id
   route_table_id = aws_route_table.through_nat.id
 }
-
-resource "aws_subnet" "telnet_target" {
-  vpc_id     = aws_vpc.metasploitable.id
-  cidr_block = "10.0.192.0/27"
-  tags = merge(local.common_tags, { Name = "metasploitable/telnet_target" })
-}
-
-resource "aws_route_table_association" "telnet_target" {
-  subnet_id      = aws_subnet.telnet_target.id
-  route_table_id = aws_route_table.through_nat.id
-}
