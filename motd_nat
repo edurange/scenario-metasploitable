@@ -8,12 +8,14 @@ Welcome to the metasploitable scenario.
 
 Your first task is to identify the subnets and machines active on this virtual network by using nmap.
 
-Next, intercept the traffic which is being sent from the metasploitable machine to the ubuntu target using tshark. 
+Then, use Metasploit to break into the metasploitable machine and find as many card images as you can.
 
-Lastly, use metasploit to get root access on the metasploitable machine in as many ways as you can.
+To get started using metasploit, type 'msfconsole'.
 
-To get started using metasploit, type 'msfconsole' it will ask you to set up an account with the web service.
-Do this, and then wait, it may take several minutes for the database to finish setting up - Do not interrupt it!
+The Metasploit database and web service are not configured for this scenario, so unfortunately you may not
+be able to use the convenience commands like 'db_nmap' or 'hosts' and 'services'
 
 Good Luck!
+
+Helpful Commands: nmap, msfconsole, sftp, lynx, exiftool, binwalk
 #########################################################
