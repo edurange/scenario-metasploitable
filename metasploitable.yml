@@ -9,7 +9,16 @@ Instances:
 Groups:
 - Name: Students
   Users:
-  - Login: student
+  - Login: player00
+  - Login: player01
+  - Login: player02
+  - Login: player03
+  - Login: player04
+  - Login: player05
+  - Login: player06
+  - Login: player07
+  - Login: player08
+  - Login: player09
   Access:
   - Instance: meta_nat
     IP_Visible: true
