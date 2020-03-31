@@ -27,4 +27,5 @@ runcmd:
 - service ssh restart
 %{ for player in players ~}
 - cp -r /home/ubuntu/gobuster /home/${player.login}/
+- echo "${player.login}  memory  memlimit/" | tee -a /etc/cgrules.conf
 %{ endfor ~}

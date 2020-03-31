@@ -144,7 +144,7 @@ data "template_cloudinit_config" "meta_nat" {
     content = templatefile("${path.module}/cloud-init-nat.yml.tpl", {
       players  = var.students
       motd     = file("${path.module}/motd_nat")
-      packages = setunion(local.net_tools, ["telnetd"])
+      packages = setunion(local.net_tools, ["telnetd", "cgroup-bin"])
       hostname = "meta-nat"
     })
   }
@@ -152,7 +152,7 @@ data "template_cloudinit_config" "meta_nat" {
 
 resource "aws_instance" "meta_nat" {
   ami                            = "ami-0ae32c49f7f809f47"
-  instance_type                  = "t2.micro"
+  instance_type                  = "t2.small"
   private_ip                     = "10.0.37.6"
   associate_public_ip_address    = true
   subnet_id                      = aws_subnet.meta_nat.id
@@ -172,15 +172,16 @@ resource "aws_instance" "meta_nat" {
     private_key = tls_private_key.key.private_key_pem
   }
 
-  #provisioner "file" {
-  #  source = "${path.module}/iptables_setup"
-  #  destination = "/home/ubuntu/iptables_setup"
-  #}
+  provisioner "file" {
+    source = "${path.module}/cgconfig.conf"
+    destination = "/home/ubuntu/cgconfig.conf"
+  }
 
   provisioner "remote-exec" {
     inline = [
       "set -eux",
-      "cloud-init status --wait --long"
+      "cloud-init status --wait --long",
+      "sudo mv /home/ubuntu/cgconfig.conf /etc/cgconfig.conf"
     ]
   }
 }
