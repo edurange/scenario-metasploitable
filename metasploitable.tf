@@ -78,7 +78,7 @@ provider "tls" {
 provider "aws" {
   version    = "~> 2"
   profile    = "default"
-  region     = "us-west-1"
+  region     = "us-east-1"
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
 }
@@ -151,7 +151,7 @@ data "template_cloudinit_config" "meta_nat" {
 }
 
 resource "aws_instance" "meta_nat" {
-  ami                            = "ami-0ae32c49f7f809f47"
+  ami                            = "ami-0f0c00f30ec46ac0c"
   instance_type                  = "t2.small"
   private_ip                     = "10.0.37.6"
   associate_public_ip_address    = true
@@ -216,7 +216,7 @@ data "template_cloudinit_config" "metasploitable" {
 }
 resource "aws_instance" "metasploitable" {
   subnet_id                   = aws_subnet.meta_target.id
-  ami                         = "ami-02acef1290732478f"
+  ami                         = "ami-00479e668a83ce0b6"
   instance_type               = "t2.nano"
   private_ip                  = "10.0.20.4"
   key_name                    = aws_key_pair.key.key_name
